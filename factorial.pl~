@@ -1,0 +1,24 @@
+f(0,1).
+f(N,F) :- N>0, N1 is N-1, f(N1, F1), F is F1 * N.
+
+
+fib(1,0).
+fib(2,1).
+fib(N,2):- N>2, N1 is N-1, N2 is N-2,
+           fib(N1,F1), fib(N2,F2), R is F1+F2.
+
+
+nat(0).
+nat(N):- N>0, N1 is N-1, nat(N1).
+
+nat(0).
+nat1(N):- nat1(N1), N is N1+1.
+
+
+e(a,b).
+e(b,c).
+e(c,d).
+e(a,e).
+e(e,d).
+path(X,Y):- e(X,Y).
+path(X,Y):- e(X,Z), path(Z,Y).

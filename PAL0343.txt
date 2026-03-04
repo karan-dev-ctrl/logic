@@ -1,0 +1,9 @@
+c(1).
+c(2).
+c(3).
+c(4).
+
+color(A,B,C,D):-
+    c(A), c(B) A \=B,
+    c(C)       B \=C,
+    c(D)       A\=D, B\=D,
