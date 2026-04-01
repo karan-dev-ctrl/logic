@@ -1,0 +1,32 @@
+
+:-dynamic f/2.
+
+field([],_).
+field([X|XC], YC):- field(X,YC), field(XC,YC).
+field1(_,[]).
+field1(X,[Y|YC]):-asset(f([X,Y], '')), field1(X,YC).
+
+
+
+
+p_field:-
+    findall(X,c([X,_],_), XL),  sort(XL,XS),
+    findall(Y,c([_,Y],_),YL), sort(YL,Y1S), reverse(Y1S, YS),
+    p_field(XS), nl,
+    p_field1(YS,XS).
+
+p_field1([],_).
+p_field1([y|YL], XL):- write(Y), write('_|_'),
+                       p_field2(Y,XL), nl, write('_|_'),
+                       p_field(XL), nl, p_field1(YL,XL).
+
+p_field2(_,[]).
+p_field2(Y, [X|XL]):- c([X,Y],P), write(P), write('_|_'),
+                      p_field2(Y,XL).
+
+p_field([]).
+p_field([_|XL]):- write('__'),
+                  p_field(XL).
+
+
+
